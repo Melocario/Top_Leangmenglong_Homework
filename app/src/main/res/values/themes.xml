@@ -6,4 +6,12 @@
     </style>
 
     <style name="Theme.LoginScreen" parent="Base.Theme.LoginScreen" />
+    <style name="btn_white_ring">
+        <item name="shapeAppearance">@style/btn_white_ring</item>
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+        <item name="strokeColor">@color/white</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="android:padding">5dp</item>
+    </style>
 </resources>

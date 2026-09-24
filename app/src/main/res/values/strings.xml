@@ -3,8 +3,10 @@
     <string name="loginlogo">loginLogo</string>
     <string name="app_connect">App Connect</string>
     <string name="welcome_back">Welcome Back!</string>
-    <string name="username_or_email">Username or Email</string>
+    <string name="username_or_email">Email or Username</string>
     <string name="password">Password</string>
     <string name="log_in">Log In</string>
     <string name="forgot_password"><u>Forgot Password?</u></string>
+    <string name="or_log_in_with">Or log in with</string>
+    <string name="don_t_have_an_account_sing_up">Don\'t have an account? Sign Up</string>
 </resources>
