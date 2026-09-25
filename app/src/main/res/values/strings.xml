@@ -9,4 +9,10 @@
     <string name="forgot_password"><u>Forgot Password?</u></string>
     <string name="or_log_in_with">Or log in with</string>
     <string name="don_t_have_an_account_sing_up">Don\'t have an account? Sign Up</string>
+    <string name="already_have_an_account_log_in">Already have an account? Log in</string>
+    <string name="create_account">Create Account</string>
+    <string name="email">Email</string>
+    <string name="username">Username</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="register">Register</string>
 </resources>

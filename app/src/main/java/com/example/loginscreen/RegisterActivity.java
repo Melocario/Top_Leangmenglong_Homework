@@ -16,22 +16,22 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.example.loginscreen.databinding.ActivityMainBinding;
+import com.example.loginscreen.databinding.ActivityRegisterBinding;
 import com.google.android.material.snackbar.Snackbar;
 
-public class MainActivity extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity {
 
-    private ActivityMainBinding binding;
+    private ActivityRegisterBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
 
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        binding = ActivityRegisterBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.register), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars() | WindowInsetsCompat.Type.ime() );
 
             v.setPadding(systemBars.left,
@@ -41,16 +41,16 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        binding.rootLayout.setOnClickListener(v->{
+        binding.registerRootLayout.setOnClickListener(v->{
             hideKeyboard();
         });
 
-        String fullText = getString(R.string.don_t_have_an_account_sing_up);
+        String fullText = getString(R.string.already_have_an_account_log_in);
         SpannableString spannableString = new SpannableString(fullText);
 
         // Find the index of "Sign Up"
-        int startIndex = fullText.indexOf("Sign Up");
-        int endIndex = startIndex + "Sign Up".length();
+        int startIndex = fullText.indexOf("Log in");
+        int endIndex = startIndex + "Log in".length();
 
         // Apply a color to "Sign Up" if found
         if (startIndex >= 0) {
@@ -64,17 +64,23 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Assuming your TextView ID is txtSignUp (you'll need to update this if it's different)
-        binding.tvSignUp.setText(spannableString);
+        binding.tvLogin.setText(spannableString);
 
-        binding.btnLogin.setOnClickListener(view -> {
+        binding.btnRegister.setOnClickListener(view -> {
             hideKeyboard();
             String message = "";
 
+            if (binding.tilEmail.getEditText() != null) {
+                message += "Email: " + binding.tilEmail.getEditText().getText().toString();
+            }
             if (binding.tilUsername.getEditText() != null) {
-                message += "Username: " + binding.tilUsername.getEditText().getText().toString();
+                message += " Username: " + binding.tilUsername.getEditText().getText().toString();
             }
             if (binding.tilPass.getEditText() != null) {
                 message += "\nPassword: " + binding.tilPass.getEditText().getText().toString();
+            }
+            if (binding.tilConfirmPass.getEditText() != null) {
+                message += " ConfirmPassword: " + binding.tilConfirmPass.getEditText().getText().toString();
             }
 
             Snackbar.make(binding.getRoot(), message, Snackbar.LENGTH_INDEFINITE)
@@ -104,9 +110,9 @@ public class MainActivity extends AppCompatActivity {
         boolean isPasswordEmpty = binding.tilPass.getEditText() == null || binding.tilPass.getEditText().getText().toString().isEmpty();
 
         if (isUsernameEmpty || isPasswordEmpty) {
-            binding.btnLogin.setEnabled(false);
+            binding.btnRegister.setEnabled(false);
         } else {
-            binding.btnLogin.setEnabled(true);
+            binding.btnRegister.setEnabled(true);
         }
     }
 
@@ -137,21 +143,3 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 }
-
-//class Test implements TextWatcher {
-//
-//    @Override
-//    public void afterTextChanged(Editable s) {
-//
-//    }
-//
-//    @Override
-//    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//
-//    }
-//
-//    @Override
-//    public void onTextChanged(CharSequence s, int start, int before, int count) {
-//
-//    }
-//}
